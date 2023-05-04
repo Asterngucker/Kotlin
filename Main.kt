@@ -26,28 +26,31 @@ fun main() {
     writer.println("HELLO")     //строка "HELLO"
     writer.flush()
 
-    //получаем требуемый ответ и обробатываем
+    //получаем требуемый ответ и обрабатываем
     var answer: Byte
+        //считываем первые три символа: "RES"
     for (i in 0..2){
         answer = reader.readByte()
-        println("Response from server: $answer")
+        println("Response from server: $answer - " + answer.toChar())
     }
-    val quantity = reader.readByte()
+    val quantity = reader.readByte()    //считываем байт с информацией о длине сообщения
     var answer_array = Array(quantity.toInt(), {0})
     println("Size = $quantity")
     var sum = 0
-    for (i in 0..quantity - 1){
+    for (i in 0..quantity - 1){     //считываем N байтов, переводим их в беззнаковый тип и суммируем
         answer_array[i] = reader.readByte().toUByte().toInt()
-        println(answer_array[i])
-        sum += answer_array[i]
+        val j =
+        println((i+1).toString() + " - " + answer_array[i].toString())
+        sum += answer_array[i]      //ответ записывается в переменную sum
     }
     //отправляем ответ
-    writer.println("SUM$sum\n")
+    writer.println("SUM$sum")
     writer.flush()
-
+    println("Sum: $sum")
+    //олучаем ответ с тестом "OK"
+    val ok = reader.readLine()    //почему то после всех байтов идет "0\n", и мы считываем эту строку
     val final_response = reader.readLine()
     println("Response from server: $final_response")
-    // Закрываем соединение
+    //закрываем соединение
     socket.close()
-
 }
