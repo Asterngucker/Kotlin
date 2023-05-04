@@ -47,7 +47,7 @@ fun main() {
     writer.println("SUM$sum")
     writer.flush()
     println("Sum: $sum")
-    //олучаем ответ с тестом "OK"
+    //получаем ответ с тестом "OK"
     val ok = reader.readLine()    //почему то после всех байтов идет "0\n", и мы считываем эту строку
     val final_response = reader.readLine()
     println("Response from server: $final_response")
