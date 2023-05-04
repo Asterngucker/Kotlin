@@ -28,7 +28,7 @@ fun main() {
 
     //получаем требуемый ответ и обрабатываем
     var answer: Byte
-        //считываем первые три символа: "RES"
+    //считываем первые три символа: "RES"
     for (i in 0..2){
         answer = reader.readByte()
         println("Response from server: $answer - " + answer.toChar())
@@ -39,7 +39,6 @@ fun main() {
     var sum = 0
     for (i in 0..quantity - 1){     //считываем N байтов, переводим их в беззнаковый тип и суммируем
         answer_array[i] = reader.readByte().toUByte().toInt()
-        val j =
         println((i+1).toString() + " - " + answer_array[i].toString())
         sum += answer_array[i]      //ответ записывается в переменную sum
     }
